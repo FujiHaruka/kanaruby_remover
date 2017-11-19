@@ -16,14 +16,16 @@ $ pip install numpy opencv-python
 
 ## Usage
 
+画像の事前準備として、本文だけをトリミングしておく。
+
 ```sh
 $ kanaruby_remover.py samples/samples01.png tmp/sample01_result.png
 ```
 
 #### 入力画像
 
-![input](./samples/sample01.png)
+<img src="./samples/sample01.png" width="400">
 
 #### 出力画像
 
-![output](./samples/sample01_result.png)
+<img src="./samples/sample01_result.png" width="400">
