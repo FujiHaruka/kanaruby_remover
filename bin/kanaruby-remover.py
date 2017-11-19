@@ -21,4 +21,6 @@ dest = args.dest
 # Main
 image = cv2.imread(src)
 dest_image = remove_rubies(image)
+if not os.path.exists(os.path.dirname(dest)):
+    os.mkdir(os.path.dirname(dest))
 cv2.imwrite(dest, dest_image)
