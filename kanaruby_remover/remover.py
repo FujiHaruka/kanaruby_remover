@@ -22,6 +22,10 @@ def straighten(image):
     position, size, angle = rect
 
     # 傾きのずれを画像の回転で補正する
+    while angle <= -45:
+        angle += 90
+    while angle >= 45:
+        angle -= 90
     rows, cols, _ = image.shape
     rotationMat = cv2.getRotationMatrix2D((cols/2, rows/2), angle, 1)
     res_image = cv2.warpAffine(image, rotationMat, (cols, rows), borderMode=cv2.BORDER_CONSTANT, borderValue=(255,255,255))
@@ -67,9 +71,3 @@ def remove_rubies(image):
     rubies = detect_rubies(shadow_image)
     remove_rubies_by_contours(straigt_image, rubies)
     return straigt_image
-
-
-if __name__ == '__main__':
-    image = cv2.imread('samples/sample01.png')
-    dst_image = remove_rubies(image)
-    cv2.imwrite('tmp/samples01_clean.png', dst_image)
